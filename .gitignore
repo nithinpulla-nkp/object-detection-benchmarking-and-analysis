@@ -205,3 +205,14 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Ignore Pascal VOC dataset
+data/VOCdevkit/
+*.tar
+*.zip
+
+
+# Ignore cloned YOLOv5 repo
+yolov5/
+
+.DS_Store
