@@ -216,3 +216,6 @@ data/VOCdevkit/
 yolov5/
 
 .DS_Store
+
+# Ignore weights and checkpoints
+*.pth

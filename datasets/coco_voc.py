@@ -6,11 +6,12 @@ from pycocotools.coco import COCO
 import torchvision.transforms as T
 
 class COCODetectionDataset(Dataset):
-    def __init__(self, img_dir, ann_file, transforms=None):
-        self.img_dir = img_dir
+    def __init__(self, ann_file, img_dir, transform=None):
+        from pycocotools.coco import COCO
         self.coco = COCO(ann_file)
         self.ids = list(sorted(self.coco.imgs.keys()))
-        self.transforms = transforms
+        self.img_dir = img_dir
+        self.transform = transform
 
     def __getitem__(self, index):
         coco = self.coco
@@ -40,8 +41,8 @@ class COCODetectionDataset(Dataset):
             "image_id": torch.tensor([img_id])
         }
 
-        if self.transforms:
-            image = self.transforms(image)
+        if self.transform:
+            image = self.transform(image)
 
         return image, target
 

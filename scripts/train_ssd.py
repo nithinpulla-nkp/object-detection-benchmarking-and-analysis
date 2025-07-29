@@ -14,7 +14,7 @@ from tqdm import tqdm
 
 # -------- Config --------
 BATCH_SIZE = 4
-EPOCHS = 10
+EPOCHS = 50
 NUM_CLASSES = 21  # 20 classes + background
 COCO_JSON = "data/voc2012_coco.json"
 IMG_DIR = "data/VOCdevkit/VOC2012/JPEGImages"
@@ -26,6 +26,7 @@ def get_transform():
     return T.Compose([
         T.Resize((300, 300)),
         T.ToTensor(),
+        T.Normalize(mean=[0.48235, 0.45882, 0.40784], std=[0.229, 0.224, 0.225])
     ])
 
 def collate_fn(batch):
@@ -35,7 +36,7 @@ def main():
     os.makedirs("outputs", exist_ok=True)
 
     print("[1] Loading dataset...")
-    dataset = COCODetectionDataset(IMG_DIR, COCO_JSON, transforms=get_transform())
+    dataset = COCODetectionDataset(COCO_JSON, IMG_DIR, transform=get_transform())
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
 
     print("[2] Initializing SSD300 model...")
