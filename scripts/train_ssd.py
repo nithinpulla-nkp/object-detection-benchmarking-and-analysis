@@ -11,6 +11,7 @@ from torchvision.transforms import functional as F
 from datasets.coco_voc import COCODetectionDataset
 import torchvision.transforms as T
 from tqdm import tqdm
+from torchvision.models.detection import SSD300_VGG16_Weights
 
 # -------- Config --------
 BATCH_SIZE = 4
@@ -37,10 +38,11 @@ def main():
 
     print("[1] Loading dataset...")
     dataset = COCODetectionDataset(COCO_JSON, IMG_DIR, transform=get_transform())
+    print("Dataset size:", len(dataset)) 
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
 
     print("[2] Initializing SSD300 model...")
-    model = ssd300_vgg16(pretrained=True)
+    model = ssd300_vgg16(weights=SSD300_VGG16_Weights.COCO_V1)
     model.head.classification_head.num_classes = NUM_CLASSES
     model.to(DEVICE)
 
@@ -54,7 +56,7 @@ def main():
 
     print("[3] Starting training...")
     model.train()
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9, weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 
     for epoch in range(EPOCHS):
         total_loss = 0.0

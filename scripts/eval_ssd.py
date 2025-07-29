@@ -72,7 +72,7 @@ def main():
                     x1, y1, x2, y2 = map(float, box)
                     all_outputs.append({
                         "image_id": int(image_id) if torch.is_tensor(image_id) else image_id,
-                        "category_id": int(label),
+                        "category_id": int(label + 1),  # if your model uses 0-based indexing
                         "bbox": [x1, y1, x2 - x1, y2 - y1],
                         "score": float(score)
                     })

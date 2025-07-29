@@ -219,3 +219,9 @@ yolov5/
 
 # Ignore weights and checkpoints
 *.pth
+
+# ignore generated coco JSON
+data/voc2012_coco.json
+
+# ignore training/eval outputs
+outputs/
