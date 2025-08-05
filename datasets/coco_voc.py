@@ -3,10 +3,8 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 from pycocotools.coco import COCO
-import torchvision.transforms as T
-from pycocotools.coco import COCO
 
-class COCODetectionDataset(torch.utils.data.Dataset):
+class COCODetectionDataset(Dataset):
     def __init__(self, ann_file, img_folder, transform=None):
         print(f"🔍 Loading COCO file from: {ann_file}")
         self.coco = COCO(ann_file)
@@ -15,10 +13,9 @@ class COCODetectionDataset(torch.utils.data.Dataset):
         self.ids = list(self.coco.imgs.keys())
 
     def __getitem__(self, idx):
-        img_id = self.ids[idx]               # This is a string like '2008_000002'
-        img_info = self.coco.loadImgs(int(img_id))[0]  # No need to wrap in str() now
-        print(f"[{idx}] Loading {img_info['file_name']}")
-
+        img_id = self.ids[idx]
+        img_info = self.coco.loadImgs(img_id)[0]
+        
         path = os.path.join(self.img_folder, img_info['file_name'])
         img = Image.open(path).convert("RGB")
 
@@ -40,7 +37,7 @@ class COCODetectionDataset(torch.utils.data.Dataset):
         target = {
             "boxes": torch.tensor(boxes, dtype=torch.float32),
             "labels": torch.tensor(labels, dtype=torch.int64),
-            "image_id": torch.tensor([idx]),  # Use the dataset index (int), not the string img_id
+            "image_id": torch.tensor([img_id], dtype=torch.int64),
             "area": torch.tensor(areas, dtype=torch.float32),
             "iscrowd": torch.tensor(iscrowd, dtype=torch.uint8),
         }

@@ -1,0 +1,158 @@
+{
+  "description": "Images selected for model comparison across SSD300, Faster R-CNN, and YOLOv5",
+  "dataset": "Pascal VOC 2012",
+  "total_images": 20,
+  "selection_criteria": "Diverse objects, varying complexity, different lighting conditions",
+  "images": [
+    {
+      "image_id": "2008_000002",
+      "filename": "2008_000002.jpg",
+      "description": "Person with horse - multi-object scene",
+      "expected_objects": ["person", "horse"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2008_000008", 
+      "filename": "2008_000008.jpg",
+      "description": "Car on street - single object",
+      "expected_objects": ["car"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_000027",
+      "filename": "2007_000027.jpg", 
+      "description": "Person on motorbike",
+      "expected_objects": ["person", "motorbike"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000042",
+      "filename": "2007_000042.jpg",
+      "description": "Train at station",
+      "expected_objects": ["train"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000121",
+      "filename": "2007_000121.jpg",
+      "description": "Dogs playing - multiple animals",
+      "expected_objects": ["dog"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000175",
+      "filename": "2007_000175.jpg",
+      "description": "Bicycle scene",
+      "expected_objects": ["bicycle"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_000241",
+      "filename": "2007_000241.jpg",
+      "description": "Aeroplane in sky",
+      "expected_objects": ["aeroplane"],
+      "difficulty": "hard"
+    },
+    {
+      "image_id": "2007_000272",
+      "filename": "2007_000272.jpg",
+      "description": "Bus on road",
+      "expected_objects": ["bus"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_000323",
+      "filename": "2007_000323.jpg",
+      "description": "Cat sitting",
+      "expected_objects": ["cat"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_000392",
+      "filename": "2007_000392.jpg",
+      "description": "Boat on water",
+      "expected_objects": ["boat"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000480",
+      "filename": "2007_000480.jpg",
+      "description": "Dining table scene",
+      "expected_objects": ["diningtable"],
+      "difficulty": "hard"
+    },
+    {
+      "image_id": "2007_000559",
+      "filename": "2007_000559.jpg",
+      "description": "Bottle on surface",
+      "expected_objects": ["bottle"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000661",
+      "filename": "2007_000661.jpg",
+      "description": "Chair in room",
+      "expected_objects": ["chair"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_000768",
+      "filename": "2007_000768.jpg",
+      "description": "Cow in field",
+      "expected_objects": ["cow"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_000876",
+      "filename": "2007_000876.jpg",
+      "description": "TV monitor display",
+      "expected_objects": ["tvmonitor"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_001154",
+      "filename": "2007_001154.jpg",
+      "description": "Sheep in pasture",
+      "expected_objects": ["sheep"],
+      "difficulty": "easy"
+    },
+    {
+      "image_id": "2007_001311",
+      "filename": "2007_001311.jpg",
+      "description": "Potted plant indoor",
+      "expected_objects": ["pottedplant"],
+      "difficulty": "hard"
+    },
+    {
+      "image_id": "2007_001430",
+      "filename": "2007_001430.jpg",
+      "description": "Sofa in living room",
+      "expected_objects": ["sofa"],
+      "difficulty": "medium"
+    },
+    {
+      "image_id": "2007_001734",
+      "filename": "2007_001734.jpg",
+      "description": "Bird on branch",
+      "expected_objects": ["bird"],
+      "difficulty": "hard"
+    },
+    {
+      "image_id": "2008_001430",
+      "filename": "2008_001430.jpg",
+      "description": "Complex scene with multiple objects",
+      "expected_objects": ["person", "car", "bicycle"],
+      "difficulty": "hard"
+    }
+  ],
+  "usage_instructions": {
+    "purpose": "Use these images to compare detection performance across all three models",
+    "evaluation_metrics": [
+      "Detection accuracy (IoU threshold)",
+      "Confidence scores",
+      "False positives/negatives",
+      "Processing time per image"
+    ],
+    "visualization": "Generate side-by-side comparison plots showing predictions from all models"
+  }
+}
